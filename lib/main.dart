@@ -62,7 +62,7 @@ class _QuizAppState extends State<QuizApp> {
         ),
         body: hasSelectedQuestion
           ? Quiz(questions: _questions, questionSelected: _questionSelected, response: _response)
-          : const Result()
+          : Result(_totalScore)
       )
     );
   }
