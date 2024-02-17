@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
+import './result.dart';
 
 main() => runApp(const QuizApp());
 
@@ -51,7 +52,7 @@ class _QuizAppState extends State<QuizApp> {
             Question(_questions[_questionSelected]['text'].toString()),
             ...answers.map((option) => Answer(option, _response))
           ],
-        ) : null,
+        ) : const Result()
       )
     );
   }
