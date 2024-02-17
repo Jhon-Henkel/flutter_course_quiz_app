@@ -48,6 +48,13 @@ class _QuizAppState extends State<QuizApp> {
     });
   }
 
+  void _restartQuiz() {
+    setState(() {
+      _questionSelected = 0;
+      _totalScore = 0;
+    });
+  }
+
   bool get hasSelectedQuestion {
     return _questionSelected < _questions.length;
   }
@@ -62,7 +69,7 @@ class _QuizAppState extends State<QuizApp> {
         ),
         body: hasSelectedQuestion
           ? Quiz(questions: _questions, questionSelected: _questionSelected, response: _response)
-          : Result(_totalScore)
+          : Result(_totalScore, _restartQuiz)
       )
     );
   }
