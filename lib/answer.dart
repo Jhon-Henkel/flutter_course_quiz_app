@@ -14,10 +14,10 @@ class Answer extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
+          foregroundColor: Colors.white
         ),
         onPressed: onPressed,
-        child: Text(text),
+        child: Text(text)
       )
     );
   }
