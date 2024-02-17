@@ -5,7 +5,7 @@ import 'package:flutter_course_quiz_app/question.dart';
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int questionSelected;
-  final void Function() response;
+  final void Function(int) response;
 
   const Quiz({
     super.key,
@@ -20,14 +20,21 @@ class Quiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> answers = hasSelectedQuestion
-        ? questions[questionSelected]['answers'] as List<String>
+    List<Map<String, Object>> answers = hasSelectedQuestion
+        ? questions[questionSelected]['answers'] as List<Map<String, Object>>
         : [];
 
     return Column(
       children: <Widget> [
         Question(questions[questionSelected]['text'].toString()),
-        ...answers.map((option) => Answer(option, response))
+        ...answers.map(
+          (option) {
+            return Answer(
+                option['answer'] as String,
+                () => response(int.parse(option['score'].toString()))
+            );
+          }
+        )
       ],
     );
   }
